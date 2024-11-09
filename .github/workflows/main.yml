@@ -10,6 +10,7 @@ jobs:
       - uses: NiklasLehnfeld/flutter-android-build-action@v1
         id: android-build
         with:
+          build-type: apk
           release: false
       - name: Archive APK
         uses: actions/upload-artifact@v3
