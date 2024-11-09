@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/niklaslehnfeld/flutter-essentials-docker:master
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: NiklasLehnfeld/flutter-android-build-action@v1
         id: android-build
         with:
           release: false
       - name: Archive APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: release-apk
           path: ${{ steps.android-build.outputs.apk-path }}
@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [android-release-build]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
         with:
           name: release-apk
       - id: version
